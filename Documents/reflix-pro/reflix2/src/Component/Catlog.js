@@ -8,6 +8,7 @@ class Catalog extends Component{
     constructor(){
         super()
         this.state={
+            budget:100
             
         }
     }
@@ -27,6 +28,14 @@ class Catalog extends Component{
         })
 
     }
+    calcBudget = () => {
+        let budget = this.state.budget
+         budget -= 3
+        this.setState({
+            budget: budget
+        })
+        console.log(budget)
+    }
     
     
     render(){
@@ -44,14 +53,20 @@ class Catalog extends Component{
                 <div className='movies'>
                     {(this.props.movie).map(m =>  (
                            <div>
-                            <Movie movie={m} change={this.props.change} />
+                            <Movie movie={m} change={this.props.change} calcBudget={this.calcBudget} budget={this.state.budget} />
                             
                             </div>
                         ) 
                          
                     )}
+                   
                     
-                </div>        
+                </div>   
+
+                <div className ="user"> 
+
+                
+                </div>     
                                     
             </div> 
         );
